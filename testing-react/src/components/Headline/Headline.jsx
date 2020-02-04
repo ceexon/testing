@@ -1,4 +1,5 @@
 import React,{ Component } from "react";
+import PropTypes from 'prop-types';
 
 class Headline extends Component {
     render() {
@@ -20,5 +21,16 @@ class Headline extends Component {
             )
     };
 }
+
+Headline.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    myArray: PropTypes.arrayOf(PropTypes.shape({
+        money : PropTypes.object,
+        present : PropTypes.bool,
+        level : PropTypes.number,
+        name : PropTypes.string,
+    }))
+};
 
 export default Headline;
