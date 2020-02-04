@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { findByTestAttr } from "../../utils";
+import { findByTestAttr, checkProps } from "../../utils";
 
 import HeadLine from "./Headline";
 
@@ -11,9 +11,31 @@ const setUp = (props = {}) => {
 };
 
 describe ("Headline Component", () => {
-    let headLine;
+
+    describe("Check PropTypes", () => {
+        it("Should not throw a warning", () => {
+            const expectedProps = {
+                title: "Testing prop types",
+                description: "PropTypes test description",
+                myArray: [
+                  {
+                    money: { cash: 2000 },
+                    present: true,
+                    level: 6,
+                    name: "Name"
+                  }
+                ]
+              }
+            ;
+
+            const propsErr = checkProps(HeadLine, expectedProps);
+            expect(propsErr).toBeUndefined();
+        })
+    })
 
     describe("With Props", () => {
+         let headLine;
+
         beforeEach(() => {
             headLine = setUp({title: "My title", description: "My description"});
         });
@@ -35,6 +57,8 @@ describe ("Headline Component", () => {
     });
 
     describe("Without Props", () => {
+         let headLine;
+
          beforeEach(() => {
            headLine = setUp();
          });
