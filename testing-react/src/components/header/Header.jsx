@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 const Header = () => (
-  <header className="fixed-top px-5" data-header="Header Wrapper">
+  <header className="px-5" data-header="Header Wrapper">
     <input type="hidden" name="test-header" data-test="Header Component" />
     <nav className="navbar navbar-expand-lg navbar-dark bg-black">
       <Link
