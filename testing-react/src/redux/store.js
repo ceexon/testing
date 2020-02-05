@@ -8,3 +8,7 @@ export const middleware = [ReduxThunk];
 export const createStoreWithMiddleware = applyMiddleware(...middleware) (createStore);
 
 export const store = createStoreWithMiddleware(RootReducer);
+
+export const testStore = (initialState) => {
+    return createStoreWithMiddleware(RootReducer, initialState);
+}
