@@ -24,7 +24,7 @@ class App extends React.Component{
   render() {
     const {posts} = this.props;
     return (
-      <BrowserRouter>
+      <BrowserRouter data-test="App Component">
         <Header />
         <HeadLine
           title="Post"
