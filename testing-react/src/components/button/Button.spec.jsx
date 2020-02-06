@@ -18,11 +18,11 @@ describe("Button Component", () => {
 
     describe('Render Button', () => {
         let wrapper;
-
+        let mockFn = jest.fn();
         beforeEach(() => {
             const props = {
                 text: "Click Me",
-                action: () => { }
+                action: mockFn
             }
             wrapper = shallow(<Button {...props} />);
         })
@@ -30,6 +30,13 @@ describe("Button Component", () => {
         it ('Should render Button without fail', () => {
             const button = findByTestAttr(wrapper, 'main-btn');
             expect(button.length).toBe(1);
+        })
+
+        it('Should simulate button click event', () => {
+            const button = findByTestAttr(wrapper, 'main-btn');
+            button.simulate('click');
+            const callback = mockFn.mock.calls.length;
+            expect(callback).toBe(1);
         })
 
     })
