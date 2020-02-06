@@ -29,4 +29,17 @@ describe('App Component', () => {
         const app = findByTestAttr(wrapper, 'App Component');
         expect(app.length).toEqual(1);
     })
+
+    it('Should update button state', () => {
+        const appInstance = wrapper.instance();
+        appInstance.toggleBtn();
+        const newState = appInstance.state.btnHidden;
+        expect(newState).toBe(true);
+    })
+
+    it('Should retur the value passed', () => {
+        const appInstance = wrapper.instance();
+        const value = appInstance.returnValue("My Value");
+        expect(value).toBe("My Value");
+    })
 })

@@ -18,11 +18,25 @@ const typesArray = [
 ];
 
 class App extends React.Component{
+  state = {
+    btnHidden: false
+  }
+
   getPosts = () => {
     this.props.fetchPosts();
+    this.toggleBtn();
   }
+
+  toggleBtn = () => {
+    const {btnHidden} = this.state;
+    this.setState({btnHidden: !btnHidden});
+  }
+
+  returnValue = value => value;
+
   render() {
     const {posts} = this.props;
+    const { btnHidden } = this.state;
     return (
       <BrowserRouter data-test="App Component">
         <Header />
@@ -35,8 +49,8 @@ class App extends React.Component{
           myArray={typesArray}
         />
 
-        <div className="container mt-3">
-          <Button text="Get Posts" action={this.getPosts} />
+        <div className="container mt-5 pt-5">
+          {!btnHidden && <Button text="Get Posts" action={this.getPosts} />}
           <div className="mt-4 row">
             {posts.map(post => {
               const {title, body} = post;
